@@ -13,8 +13,8 @@ export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders() });
 }
 
-export async function GET(request: Request) {
-  const headersList = await headers();
+export async function GET() {
+  const headersList = headers();
   const authHeader = headersList.get("Authorization");
   const token = authHeader ? authHeader.split(" ")[1] : null;
 
@@ -26,6 +26,14 @@ export async function GET(request: Request) {
   }
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  if (!apiUrl) {
+    console.error("NEXT_PUBLIC_API_URL is not defined");
+    return NextResponse.json(
+      { error: "Server configuration error" },
+      { status: 500, headers: corsHeaders() }
+    );
+  }
 
   try {
     const response = await fetch(`${apiUrl}/todo/all`, {

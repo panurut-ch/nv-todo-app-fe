@@ -16,7 +16,7 @@ type Todo = {
   updated_at: string
   created_by: User
   time?: string
-  completedAt?: string // Add this field to track when the task was marked as done
+  completedAt?: string
 }
 
 export default function DoneTasks() {
@@ -28,11 +28,9 @@ export default function DoneTasks() {
     if (savedTasks) {
       const parsedTasks: Todo[] = JSON.parse(savedTasks)
       
-      // Filter out duplicate tasks, keeping only the most recently completed one
       const uniqueTasks = parsedTasks.reduce((acc: Todo[], current) => {
         const existingTaskIndex = acc.findIndex(task => task.id === current.id)
         if (existingTaskIndex >= 0) {
-          // If the task already exists, replace it only if the current one is more recent
           if (current.completedAt && (!acc[existingTaskIndex].completedAt || new Date(current.completedAt) > new Date(acc[existingTaskIndex].completedAt))) {
             acc[existingTaskIndex] = current
           }
@@ -42,7 +40,6 @@ export default function DoneTasks() {
         return acc
       }, [])
 
-      // Sort tasks by completedAt date, most recent first
       uniqueTasks.sort((a, b) => {
         return new Date(b.completedAt || b.updated_at).getTime() - new Date(a.completedAt || a.updated_at).getTime()
       })

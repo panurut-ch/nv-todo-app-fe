@@ -13,10 +13,11 @@ export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders() });
 }
 
-export async function GET(request: Request) {
+export async function GET() {
   const headersList = await headers();
   const authHeader = headersList.get("Authorization");
   const token = authHeader ? authHeader.split(" ")[1] : null;
+  console.log('token', token)
 
   if (!token) {
     return NextResponse.json(
@@ -28,7 +29,7 @@ export async function GET(request: Request) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   try {
-    const response = await fetch(`${apiUrl}/todo`, {
+    const response = await fetch(`${apiUrl}/todo/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -40,12 +40,10 @@ export default function CalendarView({
 }: CalendarViewProps) {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Get week days
   const weekStart = startOfWeek(selectedDate);
   const weekEnd = endOfWeek(selectedDate);
   const weekDays = eachDayOfInterval({ start: weekStart, end: weekEnd });
 
-  // Filter todolist for selected date and user preference
   const todosForDay = todolist.filter((todo) => {
     if (!todo.created_at) return false;
     const todoDate = parseISO(todo.created_at);

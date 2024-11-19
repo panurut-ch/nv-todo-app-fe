@@ -1,5 +1,3 @@
-// pages/api/proxy.ts (or app/api/proxy/route.ts for App Router)
-
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -14,7 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       'Content-Type': 'application/json',
     }
 
-    // Forward the authorization header if it exists
     if (clientHeaders?.Authorization) {
       headers.Authorization = clientHeaders.Authorization
     }

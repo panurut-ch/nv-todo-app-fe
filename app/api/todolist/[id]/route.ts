@@ -13,7 +13,6 @@ export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders() })
 }
 
-// PATCH handler for updating a specific todo item
 export async function PATCH(
   request: Request,
   { params }: { params: { id: string } }
@@ -68,7 +67,6 @@ export async function PATCH(
   }
 }
 
-// DELETE handler for deleting a specific todo item
 export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
