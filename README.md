@@ -21,12 +21,12 @@ http://localhost:3000/
 ```
 
 ## Login Page
-![login_page](https://imgur.com/xqsbikL)
+![login_page](https://i.imgur.com/xqsbikL.png)
 ## Dashboard Page
-![dashboard_page](https://imgur.com/SnI0qhU)
+![dashboard_page](https://i.imgur.com/SnI0qhU.png)
 ## Add Task Page
-![addtask_page](https://imgur.com/4vqx2I5)
+![addtask_page](https://i.imgur.com/4vqx2I5.png)
 ## Calendar Mode Page
-![calendar_page](https://imgur.com/pxLvPHC)
+![calendar_page](https://i.imgur.com/pxLvPHC.png)
 ## Datatable Page
-![datatable_page](https://imgur.com/jSBGbkx)
+![datatable_page](https://i.imgur.com/jSBGbkx.png)
